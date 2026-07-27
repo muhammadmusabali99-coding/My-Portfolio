@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JavaScript Objects | Musab Ali</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins, sans-serif;
+}
+
+
+body{
+
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#020617);
+    color:white;
+    padding:40px;
+
+}
+
+
+.container{
+
+    max-width:1000px;
+    margin:auto;
+
+}
+
+
+h1{
+
+    text-align:center;
+    font-size:45px;
+    margin-bottom:10px;
+
+}
+
+
+.subtitle{
+
+    text-align:center;
+    color:#94a3b8;
+    margin-bottom:40px;
+
+}
+
+
+
+.card{
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.15);
+    padding:30px;
+    border-radius:25px;
+    margin-bottom:25px;
+
+}
+
+
+.input-box{
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+
+}
+
+
+
+input{
+
+    padding:15px;
+    border-radius:12px;
+    border:none;
+    outline:none;
+    font-size:16px;
+
+}
+
+
+
+button{
+
+    margin-top:20px;
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:#38bdf8;
+    color:#020617;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+
+button:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+.objects{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+
+}
+
+
+
+.object-card{
+
+    background:#0f172a;
+    padding:25px;
+    border-radius:20px;
+    border:1px solid #334155;
+
+}
+
+
+.object-card h3{
+
+    color:#38bdf8;
+    margin-bottom:15px;
+
+}
+
+
+.property{
+
+    margin:8px 0;
+    color:#cbd5e1;
+
+}
+
+
+footer{
+
+    text-align:center;
+    margin-top:40px;
+    color:#94a3b8;
+
+}
+
+
+@media(max-width:700px){
+
+.input-box{
+
+grid-template-columns:1fr;
+
+}
+
+h1{
+
+font-size:35px;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>JavaScript Objects</h1>
+
+<p class="subtitle">
+Learn and explore JavaScript objects using an interactive dashboard
+</p>
+
+
+
+<div class="card">
+
+
+<h2>Create Object</h2>
+
+
+<div class="input-box">
+
+<input id="name" placeholder="Enter Name">
+
+<input id="age" placeholder="Enter Age">
+
+<input id="skill" placeholder="Enter Skill">
+
+</div>
+
+
+<button onclick="addObject()">
+Add Object
+</button>
+
+
+</div>
+
+
+
+
+<div class="objects" id="objectArea"></div>
+
+
+
+</div>
+
+
+
+<footer>
+
+© 2026 Musab Ali | JavaScript Objects Project
+
+</footer>
+
+
+
+<script>
+
+
+let objects=[
+
+{
+name:"Muhammad",
+age:20,
+skill:"JavaScript"
+},
+
+{
+name:"Developer",
+age:21,
+skill:"HTML CSS"
+}
+
+];
+
+
+
+function displayObjects(){
+
+
+let area=document.getElementById("objectArea");
+
+area.innerHTML="";
+
+
+objects.forEach((obj)=>{
+
+
+area.innerHTML += `
+
+<div class="object-card">
+
+<h3>${obj.name}</h3>
+
+<div class="property">
+Age: ${obj.age}
+</div>
+
+<div class="property">
+Skill: ${obj.skill}
+</div>
+
+
+</div>
+
+`;
+
+
+});
+
+
+}
+
+
+
+function addObject(){
+
+
+let name=document.getElementById("name").value;
+
+let age=document.getElementById("age").value;
+
+let skill=document.getElementById("skill").value;
+
+
+
+if(name==="" || age==="" || skill===""){
+
+alert("Please fill all fields");
+
+return;
+
+}
+
+
+
+let newObject={
+
+name:name,
+age:age,
+skill:skill
+
+};
+
+
+
+objects.push(newObject);
+
+
+displayObjects();
+
+
+
+document.getElementById("name").value="";
+document.getElementById("age").value="";
+document.getElementById("skill").value="";
+
+
+}
+
+
+
+displayObjects();
+
+
+</script>
+
+
+</body>
+
+</html>

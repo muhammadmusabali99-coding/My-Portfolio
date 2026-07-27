@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Counter</title>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .box {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px gray;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+            color: white;
+        }
+
+        #add {
+            background: #27ae60;
+        }
+
+        #deduct {
+            background: #e74c3c;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1 id="marks">Marks: 50</h1>
+
+        <button id="add">Add Bonus Marks</button>
+        <button id="deduct">Deduct Marks</button>
+
+    </div>
+
+    <script>
+
+        let marks = 50;
+
+        let heading = document.querySelector("#marks");
+        let addBtn = document.querySelector("#add");
+        let deductBtn = document.querySelector("#deduct");
+
+        function addMarks() {
+            marks += 5;
+            heading.innerHTML = "Marks: " + marks;
+        }
+
+        function deductMarks() {
+            marks -= 5;
+            heading.innerHTML = "Marks: " + marks;
+        }
+
+        addBtn.addEventListener("click", addMarks);
+        deductBtn.addEventListener("click", deductMarks);
+
+    </script>
+
+</body>
+
+</html>

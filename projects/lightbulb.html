@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Bulb Status</title>
+
+    <style>
+        body {
+            background: #fff8dc;
+            text-align: center;
+            font-family: Tahoma, sans-serif;
+            padding-top: 100px;
+        }
+
+        .card {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px silver;
+        }
+
+        h1 {
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 12px 24px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #on {
+            background: green;
+        }
+
+        #off {
+            background: crimson;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1 id="status">Bulb is OFF 💡</h1>
+
+        <button id="on">Turn ON</button>
+        <button id="off">Turn OFF</button>
+
+    </div>
+
+    <script>
+
+        let heading = document.querySelector("#status");
+
+        let onBtn = document.querySelector("#on");
+        let offBtn = document.querySelector("#off");
+
+        function turnOn() {
+            heading.innerHTML = "Bulb is ON 💡";
+        }
+
+        function turnOff() {
+            heading.innerHTML = "Bulb is OFF 💡";
+        }
+
+        onBtn.addEventListener("click", turnOn);
+        offBtn.addEventListener("click", turnOff);
+
+    </script>
+
+</body>
+
+</html>

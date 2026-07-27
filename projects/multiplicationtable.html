@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiplication Table</title>
+
+<style>
+body{
+    font-family:Arial;
+    background:#e3f2fd;
+    text-align:center;
+    margin-top:50px;
+}
+.container{
+    width:400px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+}
+input,button{
+    padding:10px;
+    margin:8px;
+}
+button{
+    background:#1976d2;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+#output{
+    margin-top:20px;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Multiplication Table</h2>
+
+<input type="number" id="table" placeholder="Table Number"><br>
+
+<input type="number" id="times" placeholder="Number of Times"><br>
+
+<button id="btn">Show Table</button>
+
+<p id="output"></p>
+
+</div>
+
+<script>
+
+let btn=document.querySelector("#btn");
+
+btn.addEventListener("click",showTable);
+
+function showTable(){
+
+let table=document.querySelector("#table").value;
+let times=document.querySelector("#times").value;
+
+let result="";
+
+for(let i=1;i<=times;i++){
+
+result+=table+" x "+i+" = "+table*i+"<br>";
+
+}
+
+document.querySelector("#output").innerHTML=result;
+
+}
+
+</script>
+
+</body>
+
+</html>h

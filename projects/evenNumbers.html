@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Even Numbers</title>
+
+<style>
+
+body{
+background:#fff3cd;
+font-family:Arial;
+text-align:center;
+margin-top:60px;
+}
+
+input,button{
+padding:10px;
+margin:10px;
+}
+
+button{
+background:green;
+color:white;
+border:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Even Numbers</h2>
+
+<input type="number" id="number">
+
+<button id="btn">Show Even Numbers</button>
+
+<p id="output"></p>
+
+<script>
+
+let btn=document.querySelector("#btn");
+
+btn.addEventListener("click",showEven);
+
+function showEven(){
+
+let number=document.querySelector("#number").value;
+
+let result="";
+
+for(let i=2;i<=number;i+=2){
+
+result+=i+" ";
+
+}
+
+document.querySelector("#output").innerHTML=result;
+
+}
+
+</script>
+
+</body>
+
+</html>

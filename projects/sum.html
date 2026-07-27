@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Sum of Numbers</title>
+
+<style>
+
+body{
+background:#d4edda;
+font-family:Arial;
+text-align:center;
+margin-top:60px;
+}
+
+input,button{
+padding:10px;
+margin:10px;
+}
+
+button{
+background:#28a745;
+color:white;
+border:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Sum of Numbers</h2>
+
+<input type="number" id="number">
+
+<button id="btn">Calculate Sum</button>
+
+<h3 id="output"></h3>
+
+<script>
+
+let btn=document.querySelector("#btn");
+
+btn.addEventListener("click",findSum);
+
+function findSum(){
+
+let number=document.querySelector("#number").value;
+
+let sum=0;
+
+for(let i=1;i<=number;i++){
+
+sum=sum+i;
+
+}
+
+document.querySelector("#output").innerHTML="Sum = "+sum;
+
+}
+
+</script>
+
+</body>
+
+</html>

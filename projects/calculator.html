@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remaining Time Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 400px;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h1 {
+            color: #2193b0;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #2193b0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #176b87;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            line-height: 35px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Remaining Time</h1>
+
+        <input type="datetime-local" id="eventDate">
+
+        <br>
+
+        <button id="btn">Remaining Time</button>
+
+        <div id="output"></div>
+
+    </div>
+
+    <script>
+
+        let button = document.querySelector("#btn");
+
+        button.addEventListener("click", calculateTime);
+
+        function calculateTime() {
+
+            let eventDate = new Date(document.querySelector("#eventDate").value);
+            let currentDate = new Date();
+
+            let difference = eventDate - currentDate;
+
+            if (difference <= 0) {
+                document.querySelector("#output").innerHTML = "Event Time is Over!";
+                return;
+            }
+
+            let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+            let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+            let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
+            let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.querySelector("#output").innerHTML =
+                "Remaining Days: " + days + "<br>" +
+                "Remaining Hours: " + hours + "<br>" +
+                "Remaining Minutes: " + minutes + "<br>" +
+                "Remaining Seconds: " + seconds;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

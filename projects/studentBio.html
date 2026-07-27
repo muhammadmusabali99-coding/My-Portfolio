@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Bio Formatter</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 500px;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 12px gray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        #output {
+            margin-top: 20px;
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            line-height: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Bio Formatter</h1>
+
+        <label>Student Full Name</label>
+        <input type="text" id="name">
+
+        <label>City</label>
+        <input type="text" id="city">
+
+        <label>Short Introduction</label>
+        <textarea id="intro"></textarea>
+
+        <button id="btn">Format Information</button>
+
+        <div id="output"></div>
+
+    </div>
+
+    <script>
+
+        let button = document.querySelector("#btn");
+
+        button.addEventListener("click", formatInfo);
+
+        function formatInfo() {
+
+            let name = document.querySelector("#name").value.trim();
+            let city = document.querySelector("#city").value;
+            let intro = document.querySelector("#intro").value;
+
+            let nameLength = name.length;
+
+            let firstName = name.slice(0, name.indexOf(" "));
+
+            if (name.indexOf(" ") == -1) {
+                firstName = name;
+            }
+
+            let upperName = name.toUpperCase();
+
+            let lowerCity = city.toLowerCase();
+
+            let updatedIntro = intro.replaceAll("student", "developer");
+
+            let firstTwenty = updatedIntro.substring(0, 20);
+
+            document.querySelector("#output").innerHTML =
+                "<b>Clean Name:</b> " + name + "<br><br>" +
+                "<b>Name Length:</b> " + nameLength + "<br><br>" +
+                "<b>First Name:</b> " + firstName + "<br><br>" +
+                "<b>Uppercase Name:</b> " + upperName + "<br><br>" +
+                "<b>City:</b> " + lowerCity + "<br><br>" +
+                "<b>Updated Introduction:</b> " + updatedIntro + "<br><br>" +
+                "<b>First 20 Characters:</b> " + firstTwenty;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

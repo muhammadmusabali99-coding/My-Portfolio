@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Countdown</title>
+
+<style>
+
+body{
+background:#f8d7da;
+text-align:center;
+font-family:Arial;
+margin-top:60px;
+}
+
+input,button{
+padding:10px;
+margin:10px;
+}
+
+button{
+background:red;
+color:white;
+border:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Countdown</h2>
+
+<input type="number" id="number">
+
+<button id="btn">Start Countdown</button>
+
+<p id="output"></p>
+
+<script>
+
+let btn=document.querySelector("#btn");
+
+btn.addEventListener("click",countdown);
+
+function countdown(){
+
+let number=document.querySelector("#number").value;
+
+let result="";
+
+for(let i=number;i>=1;i--){
+
+result+=i+"<br>";
+
+}
+
+document.querySelector("#output").innerHTML=result;
+
+}
+
+</script>
+
+</body>
+
+</html>

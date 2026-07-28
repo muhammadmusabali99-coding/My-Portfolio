@@ -82,3 +82,87 @@
 </body>
 
 </html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Counter</title>
+
+    <style>
+        body {
+            background: #222831;
+            color: white;
+            text-align: center;
+            font-family: Verdana, sans-serif;
+            padding-top: 120px;
+        }
+
+        .container {
+            width: 420px;
+            margin: auto;
+            background: #393e46;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        h1 {
+            color: #00adb5;
+        }
+
+        button {
+            padding: 12px 22px;
+            margin: 12px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            background: #00adb5;
+            color: white;
+        }
+
+        button:hover {
+            background: #02848a;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 id="age">Age: 18</h1>
+
+        <button id="birthday">Birthday 🎂</button>
+        <button id="back">Go Back One Year</button>
+
+    </div>
+
+    <script>
+
+        let age = 18;
+
+        let heading = document.querySelector("#age");
+        let birthdayBtn = document.querySelector("#birthday");
+        let backBtn = document.querySelector("#back");
+
+        function incrementAge() {
+            age++;
+            heading.innerHTML = "Age: " + age;
+        }
+
+        function decrementAge() {
+            age--;
+            heading.innerHTML = "Age: " + age;
+        }
+
+        birthdayBtn.addEventListener("click", incrementAge);
+        backBtn.addEventListener("click", decrementAge);
+
+    </script>
+
+</body>
+
+</html>

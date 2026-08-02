@@ -1,141 +1,127 @@
+// ==============================
+// PORTFOLIO JAVASCRIPT
+// ==============================
 
-// Welcome message when website loads
-
+// Welcome message
 window.addEventListener("load", () => {
-
     console.log("Welcome to Musab's Portfolio 🚀");
-
 });
 
-
-
-
-// Project card animation on scroll
+// ==============================
+// PROJECT CARD ANIMATION
+// ==============================
 
 const cards = document.querySelectorAll(".project-card");
 
-
 window.addEventListener("scroll", () => {
-
 
     cards.forEach(card => {
 
-
         const cardPosition = card.getBoundingClientRect().top;
-
         const screenPosition = window.innerHeight / 1.2;
 
-
-        if(cardPosition < screenPosition){
+        if (cardPosition < screenPosition) {
 
             card.style.opacity = "1";
             card.style.transform = "translateY(0)";
 
         }
 
-
     });
-
 
 });
 
-
-
-
-// Smooth button interaction
+// ==============================
+// BUTTON CLICK
+// ==============================
 
 const button = document.querySelector(".btn");
 
+if (button) {
 
-button.addEventListener("click", () => {
+    button.addEventListener("click", () => {
 
+        console.log("Projects section opened");
 
-    console.log("Projects section opened");
+    });
 
+}
 
-});
+// ==============================
+// FOOTER YEAR
+// ==============================
 
+const yearElement = document.getElementById("year");
 
+if (yearElement) {
 
+    yearElement.textContent = new Date().getFullYear();
 
-// Dynamic year in footer
+}
 
-const footerText = document.querySelector("footer p");
+// ==============================
+// WEATHER APP
+// ==============================
 
+const searchBtn = document.querySelector("#searchBtn");
+const cityInput = document.querySelector("#city");
+const weatherResult = document.querySelector("#weatherResult");
 
-const year = new Date().getFullYear();
+const apiKey = "e2393abe87032057f86e1fa0861b49f7";
 
+if (searchBtn) {
 
-footerText.innerHTML = 
-`© ${year} Musab Ali Portfolio`;
+    searchBtn.addEventListener("click", () => {
 
+        console.log("Search button clicked");
 
-// Welcome message when website loads
+        getWeather();
 
-window.addEventListener("load", () => {
+    });
 
-    console.log("Welcome to Musab's Portfolio 🚀");
+}
 
-});
+async function getWeather() {
 
+    const city = cityInput.value.trim();
 
+    if (city === "") {
 
+        weatherResult.innerHTML = "<h2>Please enter a city.</h2>";
+        return;
 
-// Project card animation on scroll
+    }
 
-const cards = document.querySelectorAll(".project-card");
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
+    try {
 
-window.addEventListener("scroll", () => {
+        const response = await fetch(url);
+        const data = await response.json();
 
+        if (data.cod != 200) {
 
-    cards.forEach(card => {
-
-
-        const cardPosition = card.getBoundingClientRect().top;
-
-        const screenPosition = window.innerHeight / 1.2;
-
-
-        if(cardPosition < screenPosition){
-
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
+            weatherResult.innerHTML = "<h2>City not found.</h2>";
+            return;
 
         }
 
+        weatherResult.innerHTML = `
+            <div class="weather-info">
+                <h2>${data.name}, ${data.sys.country}</h2>
+                <h3>${data.weather[0].main}</h3>
+                <h1>${data.main.temp}°C</h1>
+                <p>🌡 Temperature: ${data.main.temp}°C</p>
+                <p>💧 Humidity: ${data.main.humidity}%</p>
+                <p>💨 Wind Speed: ${data.wind.speed} m/s</p>
+            </div>
+        `;
 
-    });
+    } catch (error) {
 
+        weatherResult.innerHTML = "<h2>Something went wrong.</h2>";
+        console.log(error);
 
-});
+    }
 
-
-
-
-// Smooth button interaction
-
-const button = document.querySelector(".btn");
-
-
-button.addEventListener("click", () => {
-
-
-    console.log("Projects section opened");
-
-
-});
-
-
-
-
-// Dynamic year in footer
-
-const footerText = document.querySelector("footer p");
-
-
-const year = new Date().getFullYear();
-
-
-footerText.innerHTML = 
-`© ${year} Musab Ali Portfolio`;
+}
